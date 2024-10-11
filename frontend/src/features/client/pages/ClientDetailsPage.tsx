@@ -1,4 +1,4 @@
-import { Container, Typography, Breadcrumbs, List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
+import { Typography, Breadcrumbs, List, ListItem, ListItemText, Paper, Stack } from '@mui/material';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 
@@ -7,6 +7,15 @@ import { useClients } from '@/features/client/stores/useClients';
 import OrdersTable from '@/features/order/components/OrdersTable';
 import { useOrders, useOrdersByClientId } from '@/features/order/stores/useOrders';
 import { formatStringDate } from '@/utils/date';
+
+const PageBreadcrumb: React.FC = () => (
+  <Breadcrumbs color="primary">
+    <Typography component={Link} to="/clients">
+      Clients
+    </Typography>
+    <Typography color="secondary">Client Details</Typography>
+  </Breadcrumbs>
+);
 
 const ClientDetailsPage: React.FC = () => {
   const { clientId } = useParams() as { clientId: string };
@@ -21,20 +30,16 @@ const ClientDetailsPage: React.FC = () => {
 
   if (!client) {
     return (
-      <Container>
+      <Stack gap={3}>
+        <PageBreadcrumb />
         <Typography variant="h6">Client not found</Typography>
-      </Container>
+      </Stack>
     );
   }
 
   return (
     <Stack gap={3}>
-      <Breadcrumbs color="primary">
-        <Typography component={Link} to="/clients">
-          Clients
-        </Typography>
-        <Typography color="secondary">Client Details</Typography>
-      </Breadcrumbs>
+      <PageBreadcrumb />
       <Paper sx={{ position: 'relative' }}>
         <UpdateClientFormButton
           sx={{ position: 'absolute', top: 5, right: 5, zIndex: 1 }}
