@@ -50,7 +50,7 @@ const main = async () => {
 
   // Serve Swagger UI
   const swaggerSpec = generateAppSwagger(app);
-  app.get('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   try {
     const prismaService = InjectionContainer.get<PrismaService>(Injection.PrismaService);
