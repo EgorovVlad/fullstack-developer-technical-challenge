@@ -41,11 +41,6 @@ export default tseslint.config(
           ],
           pathGroups: [
             {
-              pattern: '@server-types/**',
-              group: 'internal',
-              position: 'before',
-            },
-            {
               pattern: '@/**', // Adjust to match your project's internal paths (e.g., alias for internal modules)
               group: 'internal',
               position: 'after',

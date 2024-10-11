@@ -1,6 +1,5 @@
-import { CreateClientPayload, UpdateClientPayload } from '@server-types/client';
-
 import { Client } from '@/features/client/types';
+import { CreatePayloadFromModel, UpdatePayloadFromModel } from '@/types';
 import { serverApi } from '@/utils/api';
 
 export class ClientAPI {
@@ -14,12 +13,12 @@ export class ClientAPI {
     return response.data as Client[];
   }
 
-  static async createClient(client: CreateClientPayload) {
+  static async createClient(client: CreatePayloadFromModel<Client>) {
     const response = await serverApi.post('/clients', client);
     return response.data as Client;
   }
 
-  static async updateClient(id: string, client: UpdateClientPayload) {
+  static async updateClient(id: string, client: UpdatePayloadFromModel<Client>) {
     const response = await serverApi.put(`/clients/${id}`, client);
     return response.data as Client;
   }

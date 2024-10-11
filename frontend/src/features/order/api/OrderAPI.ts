@@ -1,6 +1,5 @@
-import { CreateOrderPayload, UpdateOrderPayload } from '@server-types/order';
-
 import { Order } from '@/features/order/types';
+import { CreatePayloadFromModel, UpdatePayloadFromModel } from '@/types';
 import { serverApi } from '@/utils/api';
 
 export class OrderAPI {
@@ -14,12 +13,12 @@ export class OrderAPI {
     return response.data as Order;
   }
 
-  static async createOrder(order: CreateOrderPayload) {
+  static async createOrder(order: CreatePayloadFromModel<Order>) {
     const response = await serverApi.post('/orders', order);
     return response.data as Order;
   }
 
-  static async updateOrder(id: string, order: UpdateOrderPayload) {
+  static async updateOrder(id: string, order: UpdatePayloadFromModel<Order>) {
     const response = await serverApi.put(`/orders/${id}`, order);
     return response.data as Order;
   }

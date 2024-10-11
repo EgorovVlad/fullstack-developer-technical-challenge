@@ -6,7 +6,6 @@ This project was developed for the Fullstack Developer Technical Challenge, whic
 - **Backend**: Express.js (Node.js)
 - **Frontend**: React with Vite
 - **Database**: PostgreSQL (via Docker)
-- **Shared Types**: TypeScript types shared between backend and frontend for consistent data modeling
 
 ## Quick Guide to Run the Project
 
